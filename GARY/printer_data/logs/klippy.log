@@ -1,0 +1,2070 @@
+Starting Klippy...
+Args: ['/home/orangepi/klipper/klippy/klippy.py', '/home/orangepi/printer_data/config/printer.cfg', '-I', '/home/orangepi/printer_data/comms/klippy.serial', '-l', '/home/orangepi/printer_data/logs/klippy.log', '-a', '/home/orangepi/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-159-gfec7ddd8'
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
+Start printer at Mon Apr  3 22:17:11 2023 (1680560231.1 16.4)
+===== Config file =====
+[mcu]
+serial = /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00
+restart_method = command
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PC9, EXP1_2=PA8,
+	EXP1_3=PC11, EXP1_4=PD2,
+	EXP1_5=PC10, EXP1_6=PC12,
+	EXP1_7=PD0, EXP1_8=PD1,
+	EXP1_9=<GND>, EXP1_10=<5V>,
+	
+	
+	EXP2_1=PA6, EXP2_2=PA5,
+	EXP2_3=PC6, EXP2_4=PA4,
+	EXP2_5=PC7, EXP2_6=PA7,
+	EXP2_7=PB10, EXP2_8=<RST>,
+	EXP2_9=<GND>, EXP2_10=<5V>
+
+[virtual_sdcard]
+path = /home/orangepi/printer_data/gcodes
+
+[display_status]
+
+[pause_resume]
+
+[printer]
+kinematics = cartesian
+max_velocity = 500
+max_accel = 7500
+max_z_velocity = 10
+max_z_accel = 100
+square_corner_velocity = 8.0
+
+[gcode_arcs]
+resolution = 0.1
+
+[stepper_x]
+step_pin = PE11
+dir_pin = !PE10
+enable_pin = !PE9
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_x:virtual_endstop
+position_min = -8
+position_endstop = 180
+position_max = 180
+homing_speed = 100.0
+homing_retract_dist = 0
+homing_positive_dir = true
+
+[stepper_x1]
+step_pin = PD8
+dir_pin = PB12
+enable_pin = !PD9
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_x1:virtual_endstop
+
+[stepper_y]
+step_pin = PD14
+dir_pin = PD13
+enable_pin = !PD15
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_y:virtual_endstop
+position_min = -2
+position_endstop = -2
+position_max = 184
+homing_speed = 50.0
+homing_retract_dist = 0
+homing_positive_dir = false
+
+[stepper_y1]
+step_pin = PD5
+dir_pin = !PD6
+enable_pin = !PD4
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_y1:virtual_endstop
+
+[stepper_z]
+step_pin = PE6
+dir_pin = !PC13
+enable_pin = !PE5
+rotation_distance = 40
+gear_ratio = 5:1
+microsteps = 16
+full_steps_per_rotation = 200
+endstop_pin = probe:z_virtual_endstop
+position_max = 170
+position_min = -5
+homing_speed = 15.0
+second_homing_speed = 5.0
+homing_retract_dist = 0.0
+homing_positive_dir = false
+
+[stepper_z1]
+step_pin = PE2
+dir_pin = !PE4
+enable_pin = !PE3
+rotation_distance = 40
+gear_ratio = 5:1
+microsteps = 16
+full_steps_per_rotation = 200
+
+[stepper_z2]
+step_pin = PD12
+dir_pin = PC4
+enable_pin = !PE8
+rotation_distance = 40
+gear_ratio = 5:1
+microsteps = 16
+full_steps_per_rotation = 200
+
+[tmc2209 stepper_x]
+uart_pin = PE7
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PB14
+driver_sgthrs = 150
+
+[tmc2209 stepper_x1]
+uart_pin = PE15
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PB13
+driver_sgthrs = 150
+
+[tmc2209 stepper_y]
+uart_pin = PD10
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PA0
+driver_sgthrs = 150
+
+[tmc2209 stepper_y1]
+uart_pin = PD7
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PA3
+driver_sgthrs = 150
+
+[tmc2209 stepper_z]
+uart_pin = PC14
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[tmc2209 stepper_z1]
+uart_pin = PC15
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[tmc2209 stepper_z2]
+uart_pin = PA15
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[tmc2209 extruder]
+uart_pin = PD11
+interpolate = false
+run_current = 0.3
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[force_move]
+enable_force_move = true
+
+[beacon]
+serial = /dev/serial/by-id/usb-Beacon_Beacon_RevD_250C335A515137474C202020FF0C0725-if00
+x_offset = -20
+y_offset = 0
+mesh_main_direction = x
+mesh_runs = 2
+
+[safe_z_home]
+home_xy_position = 90,90
+z_hop = 3
+
+[extruder]
+step_pin = PE1
+dir_pin = PE0
+enable_pin = !PC5
+rotation_distance = 22.67895
+gear_ratio = 50:8
+microsteps = 16
+full_steps_per_rotation = 200
+nozzle_diameter = 0.500
+pressure_advance = 0.010
+pressure_advance_smooth_time = 0.040
+filament_diameter = 1.750
+max_extrude_only_distance = 1400.0
+max_extrude_only_velocity = 120.0
+max_extrude_only_accel = 1500.0
+max_extrude_cross_section = 20000.0
+heater_pin = PB15
+max_power = 1.0
+sensor_type = PT1000
+sensor_pin = PC0
+min_extrude_temp = 0
+min_temp = 0
+max_temp = 300
+control = pid
+pid_kp = 20.753
+pid_ki = 1.048
+pid_kd = 102.726
+
+[heater_bed]
+heater_pin = PC8
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+smooth_time = 3.0
+max_power = 0.4
+min_temp = 0
+max_temp = 120
+control = pid
+pid_kp = 23.712
+pid_ki = 0.903
+pid_kd = 155.611
+
+[temperature_sensor pi_cpu]
+sensor_type = temperature_host
+gcode_id = P
+
+[heater_fan my_nozzle_fan]
+pin = PA13
+max_power = 1.0
+hardware_pwm = false
+kick_start_time = 0.500
+heater = extruder
+heater_temp = 75.0
+fan_speed = 1.00
+
+[fan]
+pin = PA14
+max_power = 1.0
+kick_start_time = 0.500
+
+[temperature_sensor Spider]
+sensor_type = temperature_mcu
+min_temp = 0
+max_temp = 100
+
+[temperature_sensor Chamber]
+sensor_type = ATC Semitec 104NT-4-R025H42G
+sensor_pin = PC3
+min_temp = 0
+max_temp = 100
+
+[controller_fan electronics_fan_1]
+pin = PB2
+max_power = 0.5
+kick_start_time = 0.500
+fan_speed = 0.50
+idle_timeout = 60
+heater = heater_bed
+
+[bed_mesh]
+speed = 300
+horizontal_move_z = 20.0
+mesh_min = 20,25
+mesh_max = 150, 155
+probe_count = 15,15
+fade_start = 0.5
+fade_end = 2
+split_delta_z = .025
+move_check_distance = 5.0
+mesh_pps = 2,2
+algorithm = bicubic
+bicubic_tension = 0.1
+relative_reference_index = 12
+
+[z_tilt]
+z_positions = 
+	-74.0, -18.0
+	76.0,  217.0
+	226.0, -18.0
+points = 
+	45, 25
+	101, 160
+	175, 25
+speed = 250
+horizontal_move_z = 10.0
+retries = 4
+retry_tolerance = 0.01
+
+[idle_timeout]
+timeout = 6000
+
+[gcode_macro pre_print_prep]
+gcode = 
+	chamber_lighting_on
+	abs_warmup_temp
+	Z_TILT_ADJUST
+	BED_MESH_CALIBRATE
+
+[gcode_macro g32]
+gcode = 
+	Z_TILT_ADJUST
+
+[gcode_macro square_bed_to_machine]
+gcode = 
+	G32
+
+[gcode_macro mesh_bed_level_machine]
+gcode = 
+	BED_MESH_CALIBRATE
+
+[gcode_macro print_start]
+gcode = 
+	{% set EXTRUDER = params.EXTRUDER|default(260) %}
+	{% set BED = params.BED|default(110) %}
+	
+	print_start_1
+	M140 S{BED}
+	M109 S{EXTRUDER}
+	M190 S{BED}
+	print_start_2
+	prime_line_regular
+
+[gcode_macro print_start_1]
+gcode = 
+	M104 S0
+	M107
+	G21
+	G90
+	M83
+	G92 E0.0
+	M220 S100
+
+[gcode_macro prime_line_regular]
+gcode = 
+	G1 Z20 F6000
+	G1 X10 Y10 F12000
+	G1 Z0.5 F600
+	G1 Y105 E10 F1000
+	G1 Y115 E2.5 F1000
+	G92 E0.0
+	G92 Z0.5
+	G90
+
+[gcode_macro print_end]
+variable_x_retract = 2
+variable_y_retract = 2
+variable_z_retract = 1
+variable_z_min = 130
+variable_z_lift = 10
+variable_x_end = 160
+variable_y_end = 180
+variable_heatbed_off = True
+variable_motors_off = True
+gcode = 
+	{% set x_mid = printer.toolhead.axis_maximum.x / 2 %}
+	{% set y_mid = printer.toolhead.axis_maximum.y / 2 %}
+	{% set z_max = printer.toolhead.axis_maximum.z %}
+	
+	
+	{% if printer.toolhead.position.x < x_mid %}
+	{% set x_dist = x_retract|abs %}
+	{% else %}
+	{% set x_dist = -(x_retract|abs) %}
+	{% endif %}
+	
+	
+	{% if printer.toolhead.position.y < y_mid %}
+	{% set y_dist = y_retract|abs %}
+	{% else %}
+	{% set y_dist = -(y_retract|abs) %}
+	{% endif %}
+	
+	
+	{% if printer.toolhead.position.z + z_retract < z_max %}
+	{% set z_dist = z_retract %}
+	{% else %}
+	{% set z_dist = z_max - printer.toolhead.position.z %}
+	{% endif %}
+	
+	SAVE_GCODE_STATE NAME=END_state
+	
+	
+	M83
+	G91
+	G1 E-0.3 F4800
+	G1 X{x_dist} Y{y_dist} Z{z_dist} F6000
+	G90
+	
+	M104 S0
+	{% if heatbed_off %}
+	M140 S0
+	{% endif %}
+	
+	
+	G1 X{x_end} Y{y_end}
+	
+	
+	{% if printer.toolhead.position.z + z_lift < z_min %}
+	G1 Z{z_min}
+	{% elif printer.toolhead.position.z + z_lift < z_max %}
+	G91
+	G1 Z{z_lift}
+	G90
+	{% else %}
+	G1 Z{z_max}
+	{% endif %}
+	
+	RESTORE_GCODE_STATE NAME=END_state
+	
+	M107
+	{% if motors_off %}
+	M84
+	{% endif %}
+	CLEAR_PAUSE
+
+[gcode_macro PAUSE]
+rename_existing = BASE_PAUSE
+variable_extrude = 1.0
+gcode = 
+	
+	{% set E = printer["gcode_macro PAUSE"].extrude|float %}
+	
+	
+	{% set x_park = printer.toolhead.axis_maximum.x|float - 5.0 %}
+	{% set y_park = printer.toolhead.axis_maximum.y|float - 5.0 %}
+	
+	{% set max_z = printer.toolhead.axis_maximum.z|float %}
+	{% set act_z = printer.toolhead.position.z|float %}
+	{% if act_z < (max_z - 2.0) %}
+	{% set z_safe = 2.0 %}
+	{% else %}
+	{% set z_safe = max_z - act_z %}
+	{% endif %}
+	
+	SAVE_GCODE_STATE NAME=PAUSE_state
+	BASE_PAUSE
+	G91
+	G1 E-{E} F2100
+	G1 Z{z_safe} F900
+	G90
+	G1 X{x_park} Y{y_park} F6000
+
+[gcode_macro RESUME]
+rename_existing = BASE_RESUME
+gcode = 
+	
+	{% set E = printer["gcode_macro PAUSE"].extrude|float %}
+	
+	G91
+	G1 E{E} F2100
+	RESTORE_GCODE_STATE NAME=PAUSE_state
+	BASE_RESUME
+
+[gcode_macro CANCEL_PRINT]
+rename_existing = BASE_CANCEL_PRINT
+gcode = 
+	print_end
+	CLEAR_PAUSE
+	SDCARD_RESET_FILE
+	BASE_CANCEL_PRINT
+
+[delayed_gcode notify_chamber]
+initial_duration = 0
+gcode = 
+	{gcode.action_respond_info("action:prompt_begin Chamber Preheated")}
+	{action_respond_info("action:prompt_choice OK")}
+	{action_respond_info("action:prompt_show")}
+
+[gcode_macro abs_warmup_temp]
+gcode = 
+	{% set TEMP = params.TEMP|default(110) %}
+	
+	M106 S255
+	M190 S{TEMP}
+	G28
+	G0 X90 Y90 Z20 F3000
+	UPDATE_DELAYED_GCODE ID=notify_chamber DURATION=1200
+
+[delayed_gcode notify_extruder_reload]
+initial_duration = 0
+gcode = 
+	{action_respond_info("action:prompt_begin Ready to Load Filament")}
+	{action_respond_info("action:prompt_choice OK")}
+	{action_respond_info("action:prompt_show")}
+
+[gcode_macro load_filament]
+gcode = 
+	{% set EXTRUDER = params.EXTRUDER|default(260) %}
+	
+	turn_fans_off
+	G0 X10 Y40 F18000
+	{% if printer.toolhead.position.z|float == printer.configfile.config["stepper_z"]["position_max"]|float %}
+	
+	{% elif printer.toolhead.position.z|float >= 50|float %}
+	
+	{% else %}
+	G90
+	G1 Z50 F600
+	{% endif %}
+	M109 S{EXTRUDER}
+	M83
+	G0 E120 F400
+	M109 S0
+	UPDATE_DELAYED_GCODE ID=notify_extruder_load DURATION=10
+
+[delayed_gcode notify_extruder_load]
+initial_duration = 0
+gcode = 
+	{action_respond_info("action:prompt_begin FIlament is Loaded")}
+	{action_respond_info("action:prompt_choice OK")}
+	{action_respond_info("action:prompt_show")}
+
+[gcode_macro unload_filament]
+gcode = 
+	{% set EXTRUDER = params.EXTRUDER|default(260) %}
+	
+	turn_fans_off
+	G0 X10 Y40 F18000
+	{% if printer.toolhead.position.z|float == printer.configfile.config["stepper_z"]["position_max"]|float %}
+	
+	{% elif printer.toolhead.position.z|float >= 50|float %}
+	
+	{% else %}
+	G90
+	G1 Z50 F600
+	{% endif %}
+	M109 S{EXTRUDER}
+	M83
+	G0 E5 F400
+	G0 E-600 F1800
+	UPDATE_DELAYED_GCODE ID=notify_extruder_reload DURATION=10
+
+[gcode_macro M600]
+gcode = 
+	{% set X = params.X|default(40) %}
+	{% set Y = params.Y|default(40) %}
+	{% set Z = params.Z|default(10) %}
+	
+	{% if printer.toolhead.status == "Ready" %}
+	
+	{% else %}
+	M117 Filament Change
+	SAVE_GCODE_STATE NAME=M600_state
+	PAUSE
+	G91
+	G1 E-5 F4000
+	G1 Z{Z}
+	G90
+	G1 X{X} Y{Y} F3000
+	G0 E15 F1800
+	G0 E-500 F4800
+	RESTORE_GCODE_STATE NAME=M600_state
+	{% endif %}
+
+[gcode_macro SWAP_RESUME]
+gcode = 
+	M117 Printing...
+	LOAD_FILAMENT
+	RESUME
+
+[gcode_macro turn_fans_off]
+gcode = 
+	M107
+
+[gcode_macro M204]
+rename_existing = M204.1
+variable_ratio = 1.0
+gcode = 
+	
+	{% if 'P' in params %}{% set accel = params.P %}{% endif %}
+	{% if 'S' in params %}{% set accel = params.S %}{% endif %}
+	{% if 'T' in params %}{% set accel = params.T %}{% endif %}
+	
+	SET_VELOCITY_LIMIT ACCEL={ accel } ACCEL_TO_DECEL={ accel|float * ratio }
+
+[beacon model default]
+model_coef = 1.4710053329995438,
+	1.7924845725218548,
+	0.7443407444739822,
+	0.3567968297267867,
+	0.37757560422098174,
+	0.3038265811223138,
+	-0.23816453500404605,
+	-0.23234223029898188,
+	0.24555660327509057,
+	0.1807383946058993
+model_domain = 3.184883321802633e-07,3.333928292624332e-07
+model_range = 0.200000,5.000000
+model_temp = 72.671534
+model_offset = 0.18000
+
+[bed_mesh default]
+version = 1
+points = 
+	-0.017326, 0.001587, 0.018495, 0.008447, 0.009057, 0.004069, 0.000699, 0.000690, 0.000786, -0.000198, -0.003890, -0.003971, 0.000000, 0.001604, -0.002800
+	-0.015403, -0.000052, 0.001981, 0.002901, 0.024836, -0.002137, -0.003900, -0.004670, -0.002525, -0.002879, -0.007247, 0.008773, -0.002718, -0.002154, -0.006547
+	-0.018074, -0.000078, 0.004363, 0.004273, 0.004106, -0.025520, -0.003839, -0.005374, -0.002528, -0.004068, -0.005793, -0.008100, -0.025371, -0.005891, -0.001910
+	-0.014329, 0.001468, 0.004877, 0.005479, 0.004336, -0.000303, -0.004287, 0.018579, -0.006882, -0.004811, -0.010664, -0.011111, -0.008081, -0.008324, -0.015347
+	-0.010354, 0.006811, -0.008627, 0.008598, 0.006761, 0.000984, -0.003599, -0.006886, -0.005010, -0.029937, -0.009520, -0.011577, 0.006442, 0.000297, -0.021042
+	-0.005784, 0.009178, 0.012124, 0.032360, 0.009025, 0.002151, -0.001786, -0.035122, -0.006360, -0.006777, 0.008937, -0.011131, -0.010285, -0.015406, -0.028946
+	-0.007160, 0.016356, 0.036901, 0.017751, 0.014812, 0.010224, -0.025788, -0.000362, -0.000873, 0.023686, -0.007367, -0.009729, -0.011350, -0.013037, -0.025231
+	0.012807, 0.025079, 0.026507, 0.002605, 0.020536, 0.017355, 0.036839, 0.004838, 0.004529, 0.001784, -0.024524, -0.005652, -0.006929, -0.013726, -0.028538
+	0.021973, 0.033550, 0.035831, 0.031901, 0.029226, 0.024741, 0.016683, 0.012661, 0.009990, 0.007925, 0.000011, -0.003605, -0.005871, -0.010534, -0.021596
+	0.031436, 0.041684, 0.041651, 0.039284, 0.035730, 0.028778, 0.020777, 0.015355, 0.014628, 0.008283, 0.000259, -0.003190, -0.004634, -0.010446, -0.023303
+	0.033960, 0.046662, 0.046446, 0.021692, 0.039029, 0.035428, 0.024701, 0.020329, 0.016685, 0.009862, -0.020560, -0.003913, -0.005233, -0.011486, -0.032213
+	0.038708, 0.054905, 0.070344, 0.050906, 0.044346, 0.037925, 0.029113, 0.023093, 0.017739, 0.037802, 0.001510, -0.002357, -0.006673, -0.011870, -0.025913
+	0.054540, 0.062347, 0.061686, 0.079267, 0.052662, 0.044029, 0.034356, -0.000523, 0.022803, 0.015916, 0.027877, -0.001352, -0.004830, -0.009542, -0.028980
+	0.061905, 0.071195, 0.052869, 0.062715, 0.056767, 0.076331, 0.037628, 0.030656, 0.025185, -0.007913, 0.004835, -0.001397, 0.008864, -0.009969, -0.021901
+	0.065864, 0.073666, 0.067120, 0.061909, 0.028452, 0.041606, 0.028090, 0.041531, 0.012724, 0.002913, -0.008701, -0.026434, -0.021640, -0.023138, -0.032466
+x_count = 15
+y_count = 15
+mesh_x_pps = 2
+mesh_y_pps = 2
+algo = bicubic
+tension = 0.1
+min_x = 20.0
+max_x = 150.0
+min_y = 25.0
+max_y = 155.0
+=======================
+Extruder max_extrude_ratio=8315.033762
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+webhooks client 281472740995616: New connection
+webhooks client 281472740995616: Client info {'program': 'Moonraker', 'version': 'v0.8.0-30-g110cbd1'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+Starting Klippy...
+Args: ['/home/orangepi/klipper/klippy/klippy.py', '/home/orangepi/printer_data/config/printer.cfg', '-I', '/home/orangepi/printer_data/comms/klippy.serial', '-l', '/home/orangepi/printer_data/logs/klippy.log', '-a', '/home/orangepi/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-159-gfec7ddd8'
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
+Start printer at Mon Apr  3 22:17:13 2023 (1680560233.6 18.2)
+===== Config file =====
+[mcu]
+serial = /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00
+restart_method = command
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PC9, EXP1_2=PA8,
+	EXP1_3=PC11, EXP1_4=PD2,
+	EXP1_5=PC10, EXP1_6=PC12,
+	EXP1_7=PD0, EXP1_8=PD1,
+	EXP1_9=<GND>, EXP1_10=<5V>,
+	
+	
+	EXP2_1=PA6, EXP2_2=PA5,
+	EXP2_3=PC6, EXP2_4=PA4,
+	EXP2_5=PC7, EXP2_6=PA7,
+	EXP2_7=PB10, EXP2_8=<RST>,
+	EXP2_9=<GND>, EXP2_10=<5V>
+
+[virtual_sdcard]
+path = /home/orangepi/printer_data/gcodes
+
+[display_status]
+
+[pause_resume]
+
+[printer]
+kinematics = cartesian
+max_velocity = 500
+max_accel = 7500
+max_z_velocity = 10
+max_z_accel = 100
+square_corner_velocity = 8.0
+
+[gcode_arcs]
+resolution = 0.1
+
+[stepper_x]
+step_pin = PE11
+dir_pin = !PE10
+enable_pin = !PE9
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_x:virtual_endstop
+position_min = -8
+position_endstop = 180
+position_max = 180
+homing_speed = 100.0
+homing_retract_dist = 0
+homing_positive_dir = true
+
+[stepper_x1]
+step_pin = PD8
+dir_pin = PB12
+enable_pin = !PD9
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_x1:virtual_endstop
+
+[stepper_y]
+step_pin = PD14
+dir_pin = PD13
+enable_pin = !PD15
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_y:virtual_endstop
+position_min = -2
+position_endstop = -2
+position_max = 184
+homing_speed = 50.0
+homing_retract_dist = 0
+homing_positive_dir = false
+
+[stepper_y1]
+step_pin = PD5
+dir_pin = !PD6
+enable_pin = !PD4
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_y1:virtual_endstop
+
+[stepper_z]
+step_pin = PE6
+dir_pin = !PC13
+enable_pin = !PE5
+rotation_distance = 40
+gear_ratio = 5:1
+microsteps = 16
+full_steps_per_rotation = 200
+endstop_pin = probe:z_virtual_endstop
+position_max = 170
+position_min = -5
+homing_speed = 15.0
+second_homing_speed = 5.0
+homing_retract_dist = 0.0
+homing_positive_dir = false
+
+[stepper_z1]
+step_pin = PE2
+dir_pin = !PE4
+enable_pin = !PE3
+rotation_distance = 40
+gear_ratio = 5:1
+microsteps = 16
+full_steps_per_rotation = 200
+
+[stepper_z2]
+step_pin = PD12
+dir_pin = PC4
+enable_pin = !PE8
+rotation_distance = 40
+gear_ratio = 5:1
+microsteps = 16
+full_steps_per_rotation = 200
+
+[tmc2209 stepper_x]
+uart_pin = PE7
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PB14
+driver_sgthrs = 150
+
+[tmc2209 stepper_x1]
+uart_pin = PE15
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PB13
+driver_sgthrs = 150
+
+[tmc2209 stepper_y]
+uart_pin = PD10
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PA0
+driver_sgthrs = 150
+
+[tmc2209 stepper_y1]
+uart_pin = PD7
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PA3
+driver_sgthrs = 150
+
+[tmc2209 stepper_z]
+uart_pin = PC14
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[tmc2209 stepper_z1]
+uart_pin = PC15
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[tmc2209 stepper_z2]
+uart_pin = PA15
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[tmc2209 extruder]
+uart_pin = PD11
+interpolate = false
+run_current = 0.3
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[force_move]
+enable_force_move = true
+
+[beacon]
+serial = /dev/serial/by-id/usb-Beacon_Beacon_RevD_250C335A515137474C202020FF0C0725-if00
+x_offset = -20
+y_offset = 0
+mesh_main_direction = x
+mesh_runs = 2
+
+[safe_z_home]
+home_xy_position = 90,90
+z_hop = 3
+
+[extruder]
+step_pin = PE1
+dir_pin = PE0
+enable_pin = !PC5
+rotation_distance = 22.67895
+gear_ratio = 50:8
+microsteps = 16
+full_steps_per_rotation = 200
+nozzle_diameter = 0.500
+pressure_advance = 0.010
+pressure_advance_smooth_time = 0.040
+filament_diameter = 1.750
+max_extrude_only_distance = 1400.0
+max_extrude_only_velocity = 120.0
+max_extrude_only_accel = 1500.0
+max_extrude_cross_section = 20000.0
+heater_pin = PB15
+max_power = 1.0
+sensor_type = PT1000
+sensor_pin = PC0
+min_extrude_temp = 0
+min_temp = 0
+max_temp = 300
+control = pid
+pid_kp = 20.753
+pid_ki = 1.048
+pid_kd = 102.726
+
+[heater_bed]
+heater_pin = PC8
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+smooth_time = 3.0
+max_power = 0.4
+min_temp = 0
+max_temp = 120
+control = pid
+pid_kp = 23.712
+pid_ki = 0.903
+pid_kd = 155.611
+
+[temperature_sensor pi_cpu]
+sensor_type = temperature_host
+gcode_id = P
+
+[heater_fan my_nozzle_fan]
+pin = PA13
+max_power = 1.0
+hardware_pwm = false
+kick_start_time = 0.500
+heater = extruder
+heater_temp = 75.0
+fan_speed = 1.00
+
+[fan]
+pin = PA14
+max_power = 1.0
+kick_start_time = 0.500
+
+[temperature_sensor Spider]
+sensor_type = temperature_mcu
+min_temp = 0
+max_temp = 100
+
+[temperature_sensor Chamber]
+sensor_type = ATC Semitec 104NT-4-R025H42G
+sensor_pin = PC3
+min_temp = 0
+max_temp = 100
+
+[controller_fan electronics_fan_1]
+pin = PB2
+max_power = 0.5
+kick_start_time = 0.500
+fan_speed = 0.50
+idle_timeout = 60
+heater = heater_bed
+
+[bed_mesh]
+speed = 300
+horizontal_move_z = 20.0
+mesh_min = 20,25
+mesh_max = 150, 155
+probe_count = 15,15
+fade_start = 0.5
+fade_end = 2
+split_delta_z = .025
+move_check_distance = 5.0
+mesh_pps = 2,2
+algorithm = bicubic
+bicubic_tension = 0.1
+relative_reference_index = 12
+
+[z_tilt]
+z_positions = 
+	-74.0, -18.0
+	76.0,  217.0
+	226.0, -18.0
+points = 
+	45, 25
+	101, 160
+	175, 25
+speed = 250
+horizontal_move_z = 10.0
+retries = 4
+retry_tolerance = 0.01
+
+[idle_timeout]
+timeout = 6000
+
+[gcode_macro pre_print_prep]
+gcode = 
+	chamber_lighting_on
+	abs_warmup_temp
+	Z_TILT_ADJUST
+	BED_MESH_CALIBRATE
+
+[gcode_macro g32]
+gcode = 
+	Z_TILT_ADJUST
+
+[gcode_macro square_bed_to_machine]
+gcode = 
+	G32
+
+[gcode_macro mesh_bed_level_machine]
+gcode = 
+	BED_MESH_CALIBRATE
+
+[gcode_macro print_start]
+gcode = 
+	{% set EXTRUDER = params.EXTRUDER|default(260) %}
+	{% set BED = params.BED|default(110) %}
+	
+	print_start_1
+	M140 S{BED}
+	M109 S{EXTRUDER}
+	M190 S{BED}
+	print_start_2
+	prime_line_regular
+
+[gcode_macro print_start_1]
+gcode = 
+	M104 S0
+	M107
+	G21
+	G90
+	M83
+	G92 E0.0
+	M220 S100
+
+[gcode_macro prime_line_regular]
+gcode = 
+	G1 Z20 F6000
+	G1 X10 Y10 F12000
+	G1 Z0.5 F600
+	G1 Y105 E10 F1000
+	G1 Y115 E2.5 F1000
+	G92 E0.0
+	G92 Z0.5
+	G90
+
+[gcode_macro print_end]
+variable_x_retract = 2
+variable_y_retract = 2
+variable_z_retract = 1
+variable_z_min = 130
+variable_z_lift = 10
+variable_x_end = 160
+variable_y_end = 180
+variable_heatbed_off = True
+variable_motors_off = True
+gcode = 
+	{% set x_mid = printer.toolhead.axis_maximum.x / 2 %}
+	{% set y_mid = printer.toolhead.axis_maximum.y / 2 %}
+	{% set z_max = printer.toolhead.axis_maximum.z %}
+	
+	
+	{% if printer.toolhead.position.x < x_mid %}
+	{% set x_dist = x_retract|abs %}
+	{% else %}
+	{% set x_dist = -(x_retract|abs) %}
+	{% endif %}
+	
+	
+	{% if printer.toolhead.position.y < y_mid %}
+	{% set y_dist = y_retract|abs %}
+	{% else %}
+	{% set y_dist = -(y_retract|abs) %}
+	{% endif %}
+	
+	
+	{% if printer.toolhead.position.z + z_retract < z_max %}
+	{% set z_dist = z_retract %}
+	{% else %}
+	{% set z_dist = z_max - printer.toolhead.position.z %}
+	{% endif %}
+	
+	SAVE_GCODE_STATE NAME=END_state
+	
+	
+	M83
+	G91
+	G1 E-0.3 F4800
+	G1 X{x_dist} Y{y_dist} Z{z_dist} F6000
+	G90
+	
+	M104 S0
+	{% if heatbed_off %}
+	M140 S0
+	{% endif %}
+	
+	
+	G1 X{x_end} Y{y_end}
+	
+	
+	{% if printer.toolhead.position.z + z_lift < z_min %}
+	G1 Z{z_min}
+	{% elif printer.toolhead.position.z + z_lift < z_max %}
+	G91
+	G1 Z{z_lift}
+	G90
+	{% else %}
+	G1 Z{z_max}
+	{% endif %}
+	
+	RESTORE_GCODE_STATE NAME=END_state
+	
+	M107
+	{% if motors_off %}
+	M84
+	{% endif %}
+	CLEAR_PAUSE
+
+[gcode_macro PAUSE]
+rename_existing = BASE_PAUSE
+variable_extrude = 1.0
+gcode = 
+	
+	{% set E = printer["gcode_macro PAUSE"].extrude|float %}
+	
+	
+	{% set x_park = printer.toolhead.axis_maximum.x|float - 5.0 %}
+	{% set y_park = printer.toolhead.axis_maximum.y|float - 5.0 %}
+	
+	{% set max_z = printer.toolhead.axis_maximum.z|float %}
+	{% set act_z = printer.toolhead.position.z|float %}
+	{% if act_z < (max_z - 2.0) %}
+	{% set z_safe = 2.0 %}
+	{% else %}
+	{% set z_safe = max_z - act_z %}
+	{% endif %}
+	
+	SAVE_GCODE_STATE NAME=PAUSE_state
+	BASE_PAUSE
+	G91
+	G1 E-{E} F2100
+	G1 Z{z_safe} F900
+	G90
+	G1 X{x_park} Y{y_park} F6000
+
+[gcode_macro RESUME]
+rename_existing = BASE_RESUME
+gcode = 
+	
+	{% set E = printer["gcode_macro PAUSE"].extrude|float %}
+	
+	G91
+	G1 E{E} F2100
+	RESTORE_GCODE_STATE NAME=PAUSE_state
+	BASE_RESUME
+
+[gcode_macro CANCEL_PRINT]
+rename_existing = BASE_CANCEL_PRINT
+gcode = 
+	print_end
+	CLEAR_PAUSE
+	SDCARD_RESET_FILE
+	BASE_CANCEL_PRINT
+
+[delayed_gcode notify_chamber]
+initial_duration = 0
+gcode = 
+	{gcode.action_respond_info("action:prompt_begin Chamber Preheated")}
+	{action_respond_info("action:prompt_choice OK")}
+	{action_respond_info("action:prompt_show")}
+
+[gcode_macro abs_warmup_temp]
+gcode = 
+	{% set TEMP = params.TEMP|default(110) %}
+	
+	M106 S255
+	M190 S{TEMP}
+	G28
+	G0 X90 Y90 Z20 F3000
+	UPDATE_DELAYED_GCODE ID=notify_chamber DURATION=1200
+
+[delayed_gcode notify_extruder_reload]
+initial_duration = 0
+gcode = 
+	{action_respond_info("action:prompt_begin Ready to Load Filament")}
+	{action_respond_info("action:prompt_choice OK")}
+	{action_respond_info("action:prompt_show")}
+
+[gcode_macro load_filament]
+gcode = 
+	{% set EXTRUDER = params.EXTRUDER|default(260) %}
+	
+	turn_fans_off
+	G0 X10 Y40 F18000
+	{% if printer.toolhead.position.z|float == printer.configfile.config["stepper_z"]["position_max"]|float %}
+	
+	{% elif printer.toolhead.position.z|float >= 50|float %}
+	
+	{% else %}
+	G90
+	G1 Z50 F600
+	{% endif %}
+	M109 S{EXTRUDER}
+	M83
+	G0 E120 F400
+	M109 S0
+	UPDATE_DELAYED_GCODE ID=notify_extruder_load DURATION=10
+
+[delayed_gcode notify_extruder_load]
+initial_duration = 0
+gcode = 
+	{action_respond_info("action:prompt_begin FIlament is Loaded")}
+	{action_respond_info("action:prompt_choice OK")}
+	{action_respond_info("action:prompt_show")}
+
+[gcode_macro unload_filament]
+gcode = 
+	{% set EXTRUDER = params.EXTRUDER|default(260) %}
+	
+	turn_fans_off
+	G0 X10 Y40 F18000
+	{% if printer.toolhead.position.z|float == printer.configfile.config["stepper_z"]["position_max"]|float %}
+	
+	{% elif printer.toolhead.position.z|float >= 50|float %}
+	
+	{% else %}
+	G90
+	G1 Z50 F600
+	{% endif %}
+	M109 S{EXTRUDER}
+	M83
+	G0 E5 F400
+	G0 E-600 F1800
+	UPDATE_DELAYED_GCODE ID=notify_extruder_reload DURATION=10
+
+[gcode_macro M600]
+gcode = 
+	{% set X = params.X|default(40) %}
+	{% set Y = params.Y|default(40) %}
+	{% set Z = params.Z|default(10) %}
+	
+	{% if printer.toolhead.status == "Ready" %}
+	
+	{% else %}
+	M117 Filament Change
+	SAVE_GCODE_STATE NAME=M600_state
+	PAUSE
+	G91
+	G1 E-5 F4000
+	G1 Z{Z}
+	G90
+	G1 X{X} Y{Y} F3000
+	G0 E15 F1800
+	G0 E-500 F4800
+	RESTORE_GCODE_STATE NAME=M600_state
+	{% endif %}
+
+[gcode_macro SWAP_RESUME]
+gcode = 
+	M117 Printing...
+	LOAD_FILAMENT
+	RESUME
+
+[gcode_macro turn_fans_off]
+gcode = 
+	M107
+
+[gcode_macro M204]
+rename_existing = M204.1
+variable_ratio = 1.0
+gcode = 
+	
+	{% if 'P' in params %}{% set accel = params.P %}{% endif %}
+	{% if 'S' in params %}{% set accel = params.S %}{% endif %}
+	{% if 'T' in params %}{% set accel = params.T %}{% endif %}
+	
+	SET_VELOCITY_LIMIT ACCEL={ accel } ACCEL_TO_DECEL={ accel|float * ratio }
+
+[beacon model default]
+model_coef = 1.4710053329995438,
+	1.7924845725218548,
+	0.7443407444739822,
+	0.3567968297267867,
+	0.37757560422098174,
+	0.3038265811223138,
+	-0.23816453500404605,
+	-0.23234223029898188,
+	0.24555660327509057,
+	0.1807383946058993
+model_domain = 3.184883321802633e-07,3.333928292624332e-07
+model_range = 0.200000,5.000000
+model_temp = 72.671534
+model_offset = 0.18000
+
+[bed_mesh default]
+version = 1
+points = 
+	-0.017326, 0.001587, 0.018495, 0.008447, 0.009057, 0.004069, 0.000699, 0.000690, 0.000786, -0.000198, -0.003890, -0.003971, 0.000000, 0.001604, -0.002800
+	-0.015403, -0.000052, 0.001981, 0.002901, 0.024836, -0.002137, -0.003900, -0.004670, -0.002525, -0.002879, -0.007247, 0.008773, -0.002718, -0.002154, -0.006547
+	-0.018074, -0.000078, 0.004363, 0.004273, 0.004106, -0.025520, -0.003839, -0.005374, -0.002528, -0.004068, -0.005793, -0.008100, -0.025371, -0.005891, -0.001910
+	-0.014329, 0.001468, 0.004877, 0.005479, 0.004336, -0.000303, -0.004287, 0.018579, -0.006882, -0.004811, -0.010664, -0.011111, -0.008081, -0.008324, -0.015347
+	-0.010354, 0.006811, -0.008627, 0.008598, 0.006761, 0.000984, -0.003599, -0.006886, -0.005010, -0.029937, -0.009520, -0.011577, 0.006442, 0.000297, -0.021042
+	-0.005784, 0.009178, 0.012124, 0.032360, 0.009025, 0.002151, -0.001786, -0.035122, -0.006360, -0.006777, 0.008937, -0.011131, -0.010285, -0.015406, -0.028946
+	-0.007160, 0.016356, 0.036901, 0.017751, 0.014812, 0.010224, -0.025788, -0.000362, -0.000873, 0.023686, -0.007367, -0.009729, -0.011350, -0.013037, -0.025231
+	0.012807, 0.025079, 0.026507, 0.002605, 0.020536, 0.017355, 0.036839, 0.004838, 0.004529, 0.001784, -0.024524, -0.005652, -0.006929, -0.013726, -0.028538
+	0.021973, 0.033550, 0.035831, 0.031901, 0.029226, 0.024741, 0.016683, 0.012661, 0.009990, 0.007925, 0.000011, -0.003605, -0.005871, -0.010534, -0.021596
+	0.031436, 0.041684, 0.041651, 0.039284, 0.035730, 0.028778, 0.020777, 0.015355, 0.014628, 0.008283, 0.000259, -0.003190, -0.004634, -0.010446, -0.023303
+	0.033960, 0.046662, 0.046446, 0.021692, 0.039029, 0.035428, 0.024701, 0.020329, 0.016685, 0.009862, -0.020560, -0.003913, -0.005233, -0.011486, -0.032213
+	0.038708, 0.054905, 0.070344, 0.050906, 0.044346, 0.037925, 0.029113, 0.023093, 0.017739, 0.037802, 0.001510, -0.002357, -0.006673, -0.011870, -0.025913
+	0.054540, 0.062347, 0.061686, 0.079267, 0.052662, 0.044029, 0.034356, -0.000523, 0.022803, 0.015916, 0.027877, -0.001352, -0.004830, -0.009542, -0.028980
+	0.061905, 0.071195, 0.052869, 0.062715, 0.056767, 0.076331, 0.037628, 0.030656, 0.025185, -0.007913, 0.004835, -0.001397, 0.008864, -0.009969, -0.021901
+	0.065864, 0.073666, 0.067120, 0.061909, 0.028452, 0.041606, 0.028090, 0.041531, 0.012724, 0.002913, -0.008701, -0.026434, -0.021640, -0.023138, -0.032466
+x_count = 15
+y_count = 15
+mesh_x_pps = 2
+mesh_y_pps = 2
+algo = bicubic
+tension = 0.1
+min_x = 20.0
+max_x = 150.0
+min_y = 25.0
+max_y = 155.0
+=======================
+Extruder max_extrude_ratio=8315.033762
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+webhooks client 281472612770672: New connection
+webhooks client 281472612770672: Client info {'program': 'Moonraker', 'version': 'v0.8.0-30-g110cbd1'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+MCU error during connect
+Traceback (most recent call last):
+  File "/home/orangepi/klipper/klippy/mcu.py", line 798, in _mcu_identify
+    self._serial.connect_uart(self._serialport, self._baud, rts)
+  File "/home/orangepi/klipper/klippy/serialhdl.py", line 182, in connect_uart
+    self._error("Unable to connect")
+  File "/home/orangepi/klipper/klippy/serialhdl.py", line 61, in _error
+    raise error(self.warn_prefix + (msg % params))
+serialhdl.error: mcu 'mcu': Unable to connect
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/orangepi/klipper/klippy/klippy.py", line 176, in _connect
+    self.send_event("klippy:mcu_identify")
+  File "/home/orangepi/klipper/klippy/klippy.py", line 263, in send_event
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/orangepi/klipper/klippy/klippy.py", line 263, in <listcomp>
+    return [cb(*params) for cb in self.event_handlers.get(event, [])]
+  File "/home/orangepi/klipper/klippy/mcu.py", line 803, in _mcu_identify
+    raise error(str(e))
+mcu.error: mcu 'mcu': Unable to connect
+Build file /home/orangepi/klipper/klippy/../.config(1331): Mon Apr 17 23:44:24 2023
+========= Last MCU build config =========
+# CONFIG_LOW_LEVEL_OPTIONS is not set
+CONFIG_MACH_AVR=y
+# CONFIG_MACH_ATSAM is not set
+# CONFIG_MACH_ATSAMD is not set
+# CONFIG_MACH_LPC176X is not set
+# CONFIG_MACH_STM32 is not set
+# CONFIG_MACH_HC32F460 is not set
+# CONFIG_MACH_RP2040 is not set
+# CONFIG_MACH_PRU is not set
+# CONFIG_MACH_AR100 is not set
+# CONFIG_MACH_LINUX is not set
+# CONFIG_MACH_SIMU is not set
+CONFIG_AVR_SELECT=y
+CONFIG_BOARD_DIRECTORY="avr"
+CONFIG_MACH_atmega2560=y
+# CONFIG_MACH_atmega1280 is not set
+# CONFIG_MACH_at90usb1286 is not set
+# CONFIG_MACH_at90usb646 is not set
+# CONFIG_MACH_atmega32u4 is not set
+# CONFIG_MACH_atmega1284p is not set
+# CONFIG_MACH_atmega644p is not set
+# CONFIG_MACH_atmega328p is not set
+# CONFIG_MACH_atmega328 is not set
+# CONFIG_MACH_atmega168 is not set
+CONFIG_MCU="atmega2560"
+CONFIG_AVRDUDE_PROTOCOL="wiring"
+CONFIG_CLOCK_FREQ=16000000
+CONFIG_AVR_CLKPR=-1
+CONFIG_AVR_STACK_SIZE=256
+CONFIG_AVR_WATCHDOG=y
+CONFIG_SERIAL=y
+CONFIG_SERIAL_BAUD_U2X=y
+CONFIG_SERIAL_PORT=0
+CONFIG_SERIAL_BAUD=250000
+CONFIG_USB_VENDOR_ID=0x1d50
+CONFIG_USB_DEVICE_ID=0x614e
+CONFIG_USB_SERIAL_NUMBER="12345"
+CONFIG_CANBUS_FREQUENCY=500000
+CONFIG_HAVE_GPIO=y
+CONFIG_HAVE_GPIO_ADC=y
+CONFIG_HAVE_GPIO_SPI=y
+CONFIG_HAVE_GPIO_I2C=y
+CONFIG_HAVE_GPIO_HARD_PWM=y
+CONFIG_HAVE_GPIO_BITBANGING=y
+CONFIG_HAVE_STRICT_TIMING=y
+CONFIG_INLINE_STEPPER_HACK=y
+=======================
+No build file /home/orangepi/klipper/klippy/../out/klipper.dict
+No build file /home/orangepi/klipper/klippy/../out/klipper.elf
+Starting Klippy...
+Args: ['/home/orangepi/klipper/klippy/klippy.py', '/home/orangepi/printer_data/config/printer.cfg', '-I', '/home/orangepi/printer_data/comms/klippy.serial', '-l', '/home/orangepi/printer_data/logs/klippy.log', '-a', '/home/orangepi/printer_data/comms/klippy.sock']
+Git version: 'v0.11.0-159-gfec7ddd8'
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
+Start printer at Tue Apr 18 23:17:11 2023 (1681859831.7 15.5)
+===== Config file =====
+[mcu]
+serial = /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00
+restart_method = command
+
+[board_pins]
+aliases = 
+	
+	EXP1_1=PC9, EXP1_2=PA8,
+	EXP1_3=PC11, EXP1_4=PD2,
+	EXP1_5=PC10, EXP1_6=PC12,
+	EXP1_7=PD0, EXP1_8=PD1,
+	EXP1_9=<GND>, EXP1_10=<5V>,
+	
+	
+	EXP2_1=PA6, EXP2_2=PA5,
+	EXP2_3=PC6, EXP2_4=PA4,
+	EXP2_5=PC7, EXP2_6=PA7,
+	EXP2_7=PB10, EXP2_8=<RST>,
+	EXP2_9=<GND>, EXP2_10=<5V>
+
+[virtual_sdcard]
+path = /home/orangepi/printer_data/gcodes
+
+[display_status]
+
+[pause_resume]
+
+[printer]
+kinematics = cartesian
+max_velocity = 500
+max_accel = 7500
+max_z_velocity = 10
+max_z_accel = 100
+square_corner_velocity = 8.0
+
+[gcode_arcs]
+resolution = 0.1
+
+[stepper_x]
+step_pin = PE11
+dir_pin = !PE10
+enable_pin = !PE9
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_x:virtual_endstop
+position_min = -8
+position_endstop = 180
+position_max = 180
+homing_speed = 100.0
+homing_retract_dist = 0
+homing_positive_dir = true
+
+[stepper_x1]
+step_pin = PD8
+dir_pin = PB12
+enable_pin = !PD9
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_x1:virtual_endstop
+
+[stepper_y]
+step_pin = PD14
+dir_pin = PD13
+enable_pin = !PD15
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_y:virtual_endstop
+position_min = -2
+position_endstop = -2
+position_max = 184
+homing_speed = 50.0
+homing_retract_dist = 0
+homing_positive_dir = false
+
+[stepper_y1]
+step_pin = PD5
+dir_pin = !PD6
+enable_pin = !PD4
+rotation_distance = 40
+microsteps = 16
+full_steps_per_rotation = 400
+endstop_pin = tmc2209_stepper_y1:virtual_endstop
+
+[stepper_z]
+step_pin = PE6
+dir_pin = !PC13
+enable_pin = !PE5
+rotation_distance = 40
+gear_ratio = 5:1
+microsteps = 16
+full_steps_per_rotation = 200
+endstop_pin = probe:z_virtual_endstop
+position_max = 170
+position_min = -5
+homing_speed = 15.0
+second_homing_speed = 5.0
+homing_retract_dist = 0.0
+homing_positive_dir = false
+
+[stepper_z1]
+step_pin = PE2
+dir_pin = !PE4
+enable_pin = !PE3
+rotation_distance = 40
+gear_ratio = 5:1
+microsteps = 16
+full_steps_per_rotation = 200
+
+[stepper_z2]
+step_pin = PD12
+dir_pin = PC4
+enable_pin = !PE8
+rotation_distance = 40
+gear_ratio = 5:1
+microsteps = 16
+full_steps_per_rotation = 200
+
+[tmc2209 stepper_x]
+uart_pin = PE7
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PB14
+driver_sgthrs = 150
+
+[tmc2209 stepper_x1]
+uart_pin = PE15
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PB13
+driver_sgthrs = 150
+
+[tmc2209 stepper_y]
+uart_pin = PD10
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PA0
+driver_sgthrs = 150
+
+[tmc2209 stepper_y1]
+uart_pin = PD7
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+diag_pin = PA3
+driver_sgthrs = 150
+
+[tmc2209 stepper_z]
+uart_pin = PC14
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[tmc2209 stepper_z1]
+uart_pin = PC15
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[tmc2209 stepper_z2]
+uart_pin = PA15
+interpolate = true
+run_current = 1.0
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[tmc2209 extruder]
+uart_pin = PD11
+interpolate = false
+run_current = 0.3
+sense_resistor = 0.110
+stealthchop_threshold = 0
+
+[force_move]
+enable_force_move = true
+
+[beacon]
+serial = /dev/serial/by-id/usb-Beacon_Beacon_RevD_250C335A515137474C202020FF0C0725-if00
+x_offset = -20
+y_offset = 0
+mesh_main_direction = x
+mesh_runs = 2
+
+[safe_z_home]
+home_xy_position = 90,90
+z_hop = 3
+
+[extruder]
+step_pin = PE1
+dir_pin = PE0
+enable_pin = !PC5
+rotation_distance = 22.67895
+gear_ratio = 50:8
+microsteps = 16
+full_steps_per_rotation = 200
+nozzle_diameter = 0.500
+pressure_advance = 0.010
+pressure_advance_smooth_time = 0.040
+filament_diameter = 1.750
+max_extrude_only_distance = 1400.0
+max_extrude_only_velocity = 120.0
+max_extrude_only_accel = 1500.0
+max_extrude_cross_section = 20000.0
+heater_pin = PB15
+max_power = 1.0
+sensor_type = PT1000
+sensor_pin = PC0
+min_extrude_temp = 0
+min_temp = 0
+max_temp = 300
+control = pid
+pid_kp = 20.753
+pid_ki = 1.048
+pid_kd = 102.726
+
+[heater_bed]
+heater_pin = PC8
+sensor_type = NTC 100K MGB18-104F39050L32
+sensor_pin = PC1
+smooth_time = 3.0
+max_power = 0.4
+min_temp = 0
+max_temp = 120
+control = pid
+pid_kp = 23.712
+pid_ki = 0.903
+pid_kd = 155.611
+
+[temperature_sensor pi_cpu]
+sensor_type = temperature_host
+gcode_id = P
+
+[heater_fan my_nozzle_fan]
+pin = PA13
+max_power = 1.0
+hardware_pwm = false
+kick_start_time = 0.500
+heater = extruder
+heater_temp = 75.0
+fan_speed = 1.00
+
+[fan]
+pin = PA14
+max_power = 1.0
+kick_start_time = 0.500
+
+[temperature_sensor Spider]
+sensor_type = temperature_mcu
+min_temp = 0
+max_temp = 100
+
+[temperature_sensor Chamber]
+sensor_type = ATC Semitec 104NT-4-R025H42G
+sensor_pin = PC3
+min_temp = 0
+max_temp = 100
+
+[controller_fan electronics_fan_1]
+pin = PB2
+max_power = 0.5
+kick_start_time = 0.500
+fan_speed = 0.50
+idle_timeout = 60
+heater = heater_bed
+
+[bed_mesh]
+speed = 300
+horizontal_move_z = 20.0
+mesh_min = 20,25
+mesh_max = 150, 155
+probe_count = 15,15
+fade_start = 0.5
+fade_end = 2
+split_delta_z = .025
+move_check_distance = 5.0
+mesh_pps = 2,2
+algorithm = bicubic
+bicubic_tension = 0.1
+relative_reference_index = 12
+
+[z_tilt]
+z_positions = 
+	-74.0, -18.0
+	76.0,  217.0
+	226.0, -18.0
+points = 
+	45, 25
+	101, 160
+	175, 25
+speed = 250
+horizontal_move_z = 10.0
+retries = 4
+retry_tolerance = 0.01
+
+[idle_timeout]
+timeout = 6000
+
+[gcode_macro pre_print_prep]
+gcode = 
+	chamber_lighting_on
+	abs_warmup_temp
+	Z_TILT_ADJUST
+	BED_MESH_CALIBRATE
+
+[gcode_macro g32]
+gcode = 
+	Z_TILT_ADJUST
+
+[gcode_macro square_bed_to_machine]
+gcode = 
+	G32
+
+[gcode_macro mesh_bed_level_machine]
+gcode = 
+	BED_MESH_CALIBRATE
+
+[gcode_macro print_start]
+gcode = 
+	{% set EXTRUDER = params.EXTRUDER|default(260) %}
+	{% set BED = params.BED|default(110) %}
+	
+	print_start_1
+	M140 S{BED}
+	M109 S{EXTRUDER}
+	M190 S{BED}
+	print_start_2
+	prime_line_regular
+
+[gcode_macro print_start_1]
+gcode = 
+	M104 S0
+	M107
+	G21
+	G90
+	M83
+	G92 E0.0
+	M220 S100
+
+[gcode_macro prime_line_regular]
+gcode = 
+	G1 Z20 F6000
+	G1 X10 Y10 F12000
+	G1 Z0.5 F600
+	G1 Y105 E10 F1000
+	G1 Y115 E2.5 F1000
+	G92 E0.0
+	G92 Z0.5
+	G90
+
+[gcode_macro print_end]
+variable_x_retract = 2
+variable_y_retract = 2
+variable_z_retract = 1
+variable_z_min = 130
+variable_z_lift = 10
+variable_x_end = 160
+variable_y_end = 180
+variable_heatbed_off = True
+variable_motors_off = True
+gcode = 
+	{% set x_mid = printer.toolhead.axis_maximum.x / 2 %}
+	{% set y_mid = printer.toolhead.axis_maximum.y / 2 %}
+	{% set z_max = printer.toolhead.axis_maximum.z %}
+	
+	
+	{% if printer.toolhead.position.x < x_mid %}
+	{% set x_dist = x_retract|abs %}
+	{% else %}
+	{% set x_dist = -(x_retract|abs) %}
+	{% endif %}
+	
+	
+	{% if printer.toolhead.position.y < y_mid %}
+	{% set y_dist = y_retract|abs %}
+	{% else %}
+	{% set y_dist = -(y_retract|abs) %}
+	{% endif %}
+	
+	
+	{% if printer.toolhead.position.z + z_retract < z_max %}
+	{% set z_dist = z_retract %}
+	{% else %}
+	{% set z_dist = z_max - printer.toolhead.position.z %}
+	{% endif %}
+	
+	SAVE_GCODE_STATE NAME=END_state
+	
+	
+	M83
+	G91
+	G1 E-0.3 F4800
+	G1 X{x_dist} Y{y_dist} Z{z_dist} F6000
+	G90
+	
+	M104 S0
+	{% if heatbed_off %}
+	M140 S0
+	{% endif %}
+	
+	
+	G1 X{x_end} Y{y_end}
+	
+	
+	{% if printer.toolhead.position.z + z_lift < z_min %}
+	G1 Z{z_min}
+	{% elif printer.toolhead.position.z + z_lift < z_max %}
+	G91
+	G1 Z{z_lift}
+	G90
+	{% else %}
+	G1 Z{z_max}
+	{% endif %}
+	
+	RESTORE_GCODE_STATE NAME=END_state
+	
+	M107
+	{% if motors_off %}
+	M84
+	{% endif %}
+	CLEAR_PAUSE
+
+[gcode_macro PAUSE]
+rename_existing = BASE_PAUSE
+variable_extrude = 1.0
+gcode = 
+	
+	{% set E = printer["gcode_macro PAUSE"].extrude|float %}
+	
+	
+	{% set x_park = printer.toolhead.axis_maximum.x|float - 5.0 %}
+	{% set y_park = printer.toolhead.axis_maximum.y|float - 5.0 %}
+	
+	{% set max_z = printer.toolhead.axis_maximum.z|float %}
+	{% set act_z = printer.toolhead.position.z|float %}
+	{% if act_z < (max_z - 2.0) %}
+	{% set z_safe = 2.0 %}
+	{% else %}
+	{% set z_safe = max_z - act_z %}
+	{% endif %}
+	
+	SAVE_GCODE_STATE NAME=PAUSE_state
+	BASE_PAUSE
+	G91
+	G1 E-{E} F2100
+	G1 Z{z_safe} F900
+	G90
+	G1 X{x_park} Y{y_park} F6000
+
+[gcode_macro RESUME]
+rename_existing = BASE_RESUME
+gcode = 
+	
+	{% set E = printer["gcode_macro PAUSE"].extrude|float %}
+	
+	G91
+	G1 E{E} F2100
+	RESTORE_GCODE_STATE NAME=PAUSE_state
+	BASE_RESUME
+
+[gcode_macro CANCEL_PRINT]
+rename_existing = BASE_CANCEL_PRINT
+gcode = 
+	print_end
+	CLEAR_PAUSE
+	SDCARD_RESET_FILE
+	BASE_CANCEL_PRINT
+
+[delayed_gcode notify_chamber]
+initial_duration = 0
+gcode = 
+	{gcode.action_respond_info("action:prompt_begin Chamber Preheated")}
+	{action_respond_info("action:prompt_choice OK")}
+	{action_respond_info("action:prompt_show")}
+
+[gcode_macro abs_warmup_temp]
+gcode = 
+	{% set TEMP = params.TEMP|default(110) %}
+	
+	M106 S255
+	M190 S{TEMP}
+	G28
+	G0 X90 Y90 Z20 F3000
+	UPDATE_DELAYED_GCODE ID=notify_chamber DURATION=1200
+
+[delayed_gcode notify_extruder_reload]
+initial_duration = 0
+gcode = 
+	{action_respond_info("action:prompt_begin Ready to Load Filament")}
+	{action_respond_info("action:prompt_choice OK")}
+	{action_respond_info("action:prompt_show")}
+
+[gcode_macro load_filament]
+gcode = 
+	{% set EXTRUDER = params.EXTRUDER|default(260) %}
+	
+	turn_fans_off
+	G0 X10 Y40 F18000
+	{% if printer.toolhead.position.z|float == printer.configfile.config["stepper_z"]["position_max"]|float %}
+	
+	{% elif printer.toolhead.position.z|float >= 50|float %}
+	
+	{% else %}
+	G90
+	G1 Z50 F600
+	{% endif %}
+	M109 S{EXTRUDER}
+	M83
+	G0 E120 F400
+	M109 S0
+	UPDATE_DELAYED_GCODE ID=notify_extruder_load DURATION=10
+
+[delayed_gcode notify_extruder_load]
+initial_duration = 0
+gcode = 
+	{action_respond_info("action:prompt_begin FIlament is Loaded")}
+	{action_respond_info("action:prompt_choice OK")}
+	{action_respond_info("action:prompt_show")}
+
+[gcode_macro unload_filament]
+gcode = 
+	{% set EXTRUDER = params.EXTRUDER|default(260) %}
+	
+	turn_fans_off
+	G0 X10 Y40 F18000
+	{% if printer.toolhead.position.z|float == printer.configfile.config["stepper_z"]["position_max"]|float %}
+	
+	{% elif printer.toolhead.position.z|float >= 50|float %}
+	
+	{% else %}
+	G90
+	G1 Z50 F600
+	{% endif %}
+	M109 S{EXTRUDER}
+	M83
+	G0 E5 F400
+	G0 E-600 F1800
+	UPDATE_DELAYED_GCODE ID=notify_extruder_reload DURATION=10
+
+[gcode_macro M600]
+gcode = 
+	{% set X = params.X|default(40) %}
+	{% set Y = params.Y|default(40) %}
+	{% set Z = params.Z|default(10) %}
+	
+	{% if printer.toolhead.status == "Ready" %}
+	
+	{% else %}
+	M117 Filament Change
+	SAVE_GCODE_STATE NAME=M600_state
+	PAUSE
+	G91
+	G1 E-5 F4000
+	G1 Z{Z}
+	G90
+	G1 X{X} Y{Y} F3000
+	G0 E15 F1800
+	G0 E-500 F4800
+	RESTORE_GCODE_STATE NAME=M600_state
+	{% endif %}
+
+[gcode_macro SWAP_RESUME]
+gcode = 
+	M117 Printing...
+	LOAD_FILAMENT
+	RESUME
+
+[gcode_macro turn_fans_off]
+gcode = 
+	M107
+
+[gcode_macro M204]
+rename_existing = M204.1
+variable_ratio = 1.0
+gcode = 
+	
+	{% if 'P' in params %}{% set accel = params.P %}{% endif %}
+	{% if 'S' in params %}{% set accel = params.S %}{% endif %}
+	{% if 'T' in params %}{% set accel = params.T %}{% endif %}
+	
+	SET_VELOCITY_LIMIT ACCEL={ accel } ACCEL_TO_DECEL={ accel|float * ratio }
+
+[beacon model default]
+model_coef = 1.4710053329995438,
+	1.7924845725218548,
+	0.7443407444739822,
+	0.3567968297267867,
+	0.37757560422098174,
+	0.3038265811223138,
+	-0.23816453500404605,
+	-0.23234223029898188,
+	0.24555660327509057,
+	0.1807383946058993
+model_domain = 3.184883321802633e-07,3.333928292624332e-07
+model_range = 0.200000,5.000000
+model_temp = 72.671534
+model_offset = 0.18000
+
+[bed_mesh default]
+version = 1
+points = 
+	-0.017326, 0.001587, 0.018495, 0.008447, 0.009057, 0.004069, 0.000699, 0.000690, 0.000786, -0.000198, -0.003890, -0.003971, 0.000000, 0.001604, -0.002800
+	-0.015403, -0.000052, 0.001981, 0.002901, 0.024836, -0.002137, -0.003900, -0.004670, -0.002525, -0.002879, -0.007247, 0.008773, -0.002718, -0.002154, -0.006547
+	-0.018074, -0.000078, 0.004363, 0.004273, 0.004106, -0.025520, -0.003839, -0.005374, -0.002528, -0.004068, -0.005793, -0.008100, -0.025371, -0.005891, -0.001910
+	-0.014329, 0.001468, 0.004877, 0.005479, 0.004336, -0.000303, -0.004287, 0.018579, -0.006882, -0.004811, -0.010664, -0.011111, -0.008081, -0.008324, -0.015347
+	-0.010354, 0.006811, -0.008627, 0.008598, 0.006761, 0.000984, -0.003599, -0.006886, -0.005010, -0.029937, -0.009520, -0.011577, 0.006442, 0.000297, -0.021042
+	-0.005784, 0.009178, 0.012124, 0.032360, 0.009025, 0.002151, -0.001786, -0.035122, -0.006360, -0.006777, 0.008937, -0.011131, -0.010285, -0.015406, -0.028946
+	-0.007160, 0.016356, 0.036901, 0.017751, 0.014812, 0.010224, -0.025788, -0.000362, -0.000873, 0.023686, -0.007367, -0.009729, -0.011350, -0.013037, -0.025231
+	0.012807, 0.025079, 0.026507, 0.002605, 0.020536, 0.017355, 0.036839, 0.004838, 0.004529, 0.001784, -0.024524, -0.005652, -0.006929, -0.013726, -0.028538
+	0.021973, 0.033550, 0.035831, 0.031901, 0.029226, 0.024741, 0.016683, 0.012661, 0.009990, 0.007925, 0.000011, -0.003605, -0.005871, -0.010534, -0.021596
+	0.031436, 0.041684, 0.041651, 0.039284, 0.035730, 0.028778, 0.020777, 0.015355, 0.014628, 0.008283, 0.000259, -0.003190, -0.004634, -0.010446, -0.023303
+	0.033960, 0.046662, 0.046446, 0.021692, 0.039029, 0.035428, 0.024701, 0.020329, 0.016685, 0.009862, -0.020560, -0.003913, -0.005233, -0.011486, -0.032213
+	0.038708, 0.054905, 0.070344, 0.050906, 0.044346, 0.037925, 0.029113, 0.023093, 0.017739, 0.037802, 0.001510, -0.002357, -0.006673, -0.011870, -0.025913
+	0.054540, 0.062347, 0.061686, 0.079267, 0.052662, 0.044029, 0.034356, -0.000523, 0.022803, 0.015916, 0.027877, -0.001352, -0.004830, -0.009542, -0.028980
+	0.061905, 0.071195, 0.052869, 0.062715, 0.056767, 0.076331, 0.037628, 0.030656, 0.025185, -0.007913, 0.004835, -0.001397, 0.008864, -0.009969, -0.021901
+	0.065864, 0.073666, 0.067120, 0.061909, 0.028452, 0.041606, 0.028090, 0.041531, 0.012724, 0.002913, -0.008701, -0.026434, -0.021640, -0.023138, -0.032466
+x_count = 15
+y_count = 15
+mesh_x_pps = 2
+mesh_y_pps = 2
+algo = bicubic
+tension = 0.1
+min_x = 20.0
+max_x = 150.0
+min_y = 25.0
+max_y = 155.0
+=======================
+Extruder max_extrude_ratio=8315.033762
+mcu 'mcu': Starting serial connect
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+webhooks client 281472966615584: New connection
+webhooks client 281472966615584: Client info {'program': 'Moonraker', 'version': 'v0.8.0-30-g110cbd1'}
+mcu 'mcu': Unable to open serial port: [Errno 2] could not open port /dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00: [Errno 2] No such file or directory: '/dev/serial/by-id/usb-Klipper_stm32f446xx_58004C001951303439363932-if00'
+mcu 'mcu': Unable to open seriStarting Klippy...
+Args: ['/home/orangepi/klipper/klippy/klippy.py', '/home/orangepi/printer_data/config/printer.cfg', '-I', '/home/orangepi/printer_data/comms/klippy.serial', '-l', '/home/orangepi/printer_data/logs/klippy.log', '-a', '/home/orangepi/printer_data/comms/klippy.sock']
+Git version: '?'
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
+Starting Klippy...
+Args: ['/home/orangepi/klipper/klippy/klippy.py', '/home/orangepi/printer_data/config/printer.cfg', '-I', '/home/orangepi/printer_data/comms/klippy.serial', '-l', '/home/orangepi/printer_data/logs/klippy.log', '-a', '/home/orangepi/printer_data/comms/klippy.sock']
+Git version: '?'
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
+Starting Klippy...
+Args: ['/home/orangepi/klipper/klippy/klippy.py', '/home/orangepi/printer_data/config/printer.cfg', '-I', '/home/orangepi/printer_data/comms/klippy.serial', '-l', '/home/orangepi/printer_data/logs/klippy.log', '-a', '/home/orangepi/printer_data/comms/klippy.sock']
+Git version: '?'
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
+Starting Klippy...
+Args: ['/home/orangepi/klipper/klippy/klippy.py', '/home/orangepi/printer_data/config/printer.cfg', '-I', '/home/orangepi/printer_data/comms/klippy.serial', '-l', '/home/orangepi/printer_data/logs/klippy.log', '-a', '/home/orangepi/printer_data/comms/klippy.sock']
+Git version: '?'
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
+Starting Klippy...
+Args: ['/home/orangepi/klipper/klippy/klippy.py', '/home/orangepi/printer_data/config/printer.cfg', '-I', '/home/orangepi/printer_data/comms/klippy.serial', '-l', '/home/orangepi/printer_data/logs/klippy.log', '-a', '/home/orangepi/printer_data/comms/klippy.sock']
+Git version: '?'
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
+Starting Klippy...
+Args: ['/home/orangepi/klipper/klippy/klippy.py', '/home/orangepi/printer_data/config/printer.cfg', '-I', '/home/orangepi/printer_data/comms/klippy.serial', '-l', '/home/orangepi/printer_data/logs/klippy.log', '-a', '/home/orangepi/printer_data/comms/klippy.sock']
+Git version: '?'
+CPU: 4 core ?
+Python: '3.9.2 (default, Feb 28 2021, 17:03:44) \n[GCC 10.2.1 20210110]'
